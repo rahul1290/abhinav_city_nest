@@ -1,5 +1,6 @@
 import { Entity,Column,PrimaryGeneratedColumn, AfterInsert, AfterUpdate, AfterRemove } from "typeorm";
 import { Exclude } from "class-transformer";
+import { DefaultValuePipe } from "@nestjs/common";
 
 @Entity()
 export class User {
@@ -12,6 +13,9 @@ export class User {
     @Column()
     @Exclude()
     password : string;
+
+    @Column()
+    status : boolean;
 
     @AfterInsert()
     logInsert(){
